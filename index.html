@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSG 3•D | Commercial + Industrial Construction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --concrete: #1a1a18;
+    --concrete-mid: #2c2c28;
+    --concrete-light: #3d3d38;
+    --steel: #c8a84b;
+    --steel-light: #e2c878;
+    --off-white: #f0ede6;
+    --warm-white: #faf8f4;
+    --ghost: rgba(240,237,230,0.06);
+    --ghost-mid: rgba(240,237,230,0.12);
+    --ghost-strong: rgba(240,237,230,0.22);
+    --green-win: #3a7d44;
+    --red-loss: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--concrete);
+    color: var(--off-white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(26,26,24,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--ghost-mid);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-wordmark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--off-white);
+  }
+
+  .nav-wordmark span { color: var(--steel); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--off-white); }
+
+  .nav-links a.active { color: var(--steel); }
+
+  .nav-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--concrete) !important;
+    background: var(--steel);
+    padding: 10px 22px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--steel-light) !important;
+    color: var(--concrete) !important;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-texture {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 60px,
+        rgba(240,237,230,0.015) 60px,
+        rgba(240,237,230,0.015) 61px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        rgba(240,237,230,0.015) 60px,
+        rgba(240,237,230,0.015) 61px
+      );
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--steel);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 7vw, 110px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--off-white);
+    margin-bottom: 36px;
+  }
+
+  .hero-title em {
+    color: var(--steel);
+    font-style: normal;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(240,237,230,0.7);
+    max-width: 440px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 52px;
+  }
+
+  .pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid var(--ghost-strong);
+    color: rgba(240,237,230,0.75);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s;
+  }
+
+  .pill:hover {
+    border-color: var(--steel);
+    color: var(--steel);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    background: var(--steel);
+    color: var(--concrete);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--steel-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    border: 1px solid var(--ghost-strong);
+    color: var(--off-white);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--off-white);
+    background: var(--ghost);
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image-stack {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-image-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55) contrast(1.1);
+  }
+
+  .hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      var(--concrete) 0%,
+      rgba(26,26,24,0.15) 30%,
+      transparent 60%
+    );
+  }
+
+  .hero-stat-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--ghost-mid);
+    z-index: 3;
+  }
+
+  .hero-stat {
+    padding: 28px 32px;
+    background: rgba(26,26,24,0.88);
+    backdrop-filter: blur(8px);
+    border-right: 1px solid var(--ghost-mid);
+  }
+
+  .hero-stat:last-child { border-right: none; }
+
+  .hero-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--steel);
+    margin-bottom: 4px;
+  }
+
+  .hero-stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.55);
+  }
+
+  /* ─── SECTION UTILITIES ─── */
+  section { position: relative; }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--steel);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--off-white);
+    margin-bottom: 24px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(240,237,230,0.65);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* ─── PRESSURE SECTION ─── */
+  .pressure {
+    padding: 120px 0;
+    background: var(--concrete-mid);
+  }
+
+  .pressure-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .pressure-left .section-body {
+    margin-bottom: 48px;
+  }
+
+  .challenge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .challenge-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--ghost-mid);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .challenge-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--steel);
+    line-height: 1;
+    min-width: 36px;
+    opacity: 0.5;
+  }
+
+  .challenge-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--off-white);
+    padding-top: 4px;
+  }
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .solution-card {
+    background: var(--concrete-light);
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+  }
+
+  .solution-card:hover {
+    background: rgba(200,168,75,0.08);
+  }
+
+  .solution-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--steel);
+    transition: height 0.3s ease;
+  }
+
+  .solution-card:hover::before { height: 100%; }
+
+  .solution-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .solution-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    margin-bottom: 6px;
+  }
+
+  .solution-desc {
+    font-size: 13px;
+    color: rgba(240,237,230,0.55);
+    line-height: 1.6;
+  }
+
+  /* ─── COMPARISON TABLE ─── */
+  .comparison {
+    padding: 120px 0;
+    background: var(--concrete);
+  }
+
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 0;
+    margin-top: 64px;
+    background: var(--concrete-mid);
+  }
+
+  .comp-col-header {
+    padding: 20px 24px;
+    border-right: 1px solid var(--ghost-mid);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.5);
+  }
+
+  .comp-col-header.rsg {
+    background: rgba(200,168,75,0.12);
+    color: var(--steel);
+    border-top: 2px solid var(--steel);
+  }
+
+  .comp-col-header:last-child { border-right: none; }
+
+  .comp-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    border-top: 1px solid var(--ghost-mid);
+    transition: background 0.2s;
+  }
+
+  .comp-row:hover { background: var(--ghost); }
+
+  .comp-cell {
+    padding: 20px 24px;
+    border-right: 1px solid var(--ghost-mid);
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(240,237,230,0.7);
+  }
+
+  .comp-cell:last-child { border-right: none; }
+
+  .comp-cell.metric {
+    font-weight: 500;
+    color: var(--off-white);
+    font-size: 14px;
+  }
+
+  .comp-cell.rsg-val {
+    background: rgba(200,168,75,0.06);
+    font-weight: 600;
+    color: var(--steel);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .comp-cell.bad {
+    color: rgba(240,237,230,0.35);
+    font-size: 14px;
+  }
+
+  /* ─── USE CASES ─── */
+  .use-cases {
+    padding: 120px 0;
+    background: var(--concrete-mid);
+  }
+
+  .use-cases-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 72px;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .use-case-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+  }
+
+  .use-case-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4) contrast(1.1) saturate(0.6);
+    transition: filter 0.4s ease, transform 0.6s ease;
+  }
+
+  .use-case-card:hover .use-case-bg {
+    filter: brightness(0.55) contrast(1.1) saturate(0.7);
+    transform: scale(1.04);
+  }
+
+  .use-case-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 36px 28px;
+    background: linear-gradient(to top, rgba(26,26,24,0.9) 0%, transparent 60%);
+  }
+
+  .use-case-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 8px;
+  }
+
+  .use-case-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: var(--off-white);
+    margin-bottom: 12px;
+  }
+
+  .use-case-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .use-case-card:hover .use-case-bullets {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .use-case-bullets li {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(240,237,230,0.8);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+
+  .use-case-bullets li::before {
+    content: '—';
+    color: var(--steel);
+    flex-shrink: 0;
+  }
+
+  /* Use case backgrounds using gradients as placeholders */
+  .uc-retail .use-case-bg { background-color: #2a2f2a; background-image: linear-gradient(135deg, #1a2a1a 0%, #3a4a2a 100%); }
+  .uc-industrial .use-case-bg { background-color: #2a2a30; background-image: linear-gradient(135deg, #1a1a2a 0%, #3a3040 100%); }
+  .uc-datacenter .use-case-bg { background-color: #1e2a2a; background-image: linear-gradient(135deg, #0a1a20 0%, #203040 100%); }
+
+  /* ─── STAKEHOLDERS ─── */
+  .stakeholders {
+    padding: 120px 0;
+    background: var(--concrete);
+  }
+
+  .stakeholders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+
+  .stakeholder-panel {
+    padding: 52px 40px;
+    background: var(--concrete-mid);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .stakeholder-panel::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--steel);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .stakeholder-panel:hover { background: var(--concrete-light); }
+  .stakeholder-panel:hover::after { transform: scaleX(1); }
+
+  .stakeholder-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 16px;
+  }
+
+  .stakeholder-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--off-white);
+    margin-bottom: 32px;
+  }
+
+  .stakeholder-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .stakeholder-benefits li {
+    display: flex;
+    gap: 14px;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240,237,230,0.7);
+    line-height: 1.5;
+    align-items: flex-start;
+  }
+
+  .stakeholder-benefits li::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--steel);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ─── PROOF BAND ─── */
+  .proof-band {
+    padding: 80px 0;
+    background: var(--steel);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .proof-band-inner {
+    display: flex;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .proof-stat {
+    flex: 1;
+    text-align: center;
+    padding: 0 32px;
+    border-right: 1px solid rgba(26,26,24,0.2);
+  }
+
+  .proof-stat:last-child { border-right: none; }
+
+  .proof-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    color: var(--concrete);
+    margin-bottom: 8px;
+  }
+
+  .proof-stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.65);
+  }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    padding: 160px 0;
+    background: var(--concrete-mid);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: 'RSG 3•D';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 320px;
+    color: rgba(240,237,230,0.018);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .cta-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 28px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 6vw, 88px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--off-white);
+    margin-bottom: 28px;
+  }
+
+  .cta-body {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(240,237,230,0.6);
+    line-height: 1.7;
+    margin-bottom: 52px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  /* ─── FORM ─── */
+  .form-section {
+    padding: 120px 0;
+    background: var(--concrete);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .form-label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.5);
+    margin-bottom: 8px;
+  }
+
+  .form-input {
+    width: 100%;
+    background: var(--concrete-mid);
+    border: 1px solid var(--ghost-mid);
+    color: var(--off-white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 20px;
+  }
+
+  .form-input:focus {
+    border-color: var(--steel);
+  }
+
+  .form-input::placeholder { color: rgba(240,237,230,0.25); }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  select.form-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8a84b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    cursor: pointer;
+  }
+
+  select.form-input option { background: var(--concrete-mid); }
+
+  textarea.form-input {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-submit {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 18px 48px;
+    background: var(--steel);
+    color: var(--concrete);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+  }
+
+  .form-submit:hover { background: var(--steel-light); }
+
+  .form-trust {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(240,237,230,0.4);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .trust-item::before {
+    content: '✓';
+    color: var(--steel);
+    font-size: 14px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #111110;
+    padding: 64px 0 40px;
+    border-top: 1px solid var(--ghost-mid);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--ghost-mid);
+    margin-bottom: 32px;
+  }
+
+  .footer-brand p {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240,237,230,0.4);
+    line-height: 1.7;
+    margin-top: 16px;
+    max-width: 280px;
+  }
+
+  .footer-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.35);
+    margin-bottom: 20px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240,237,230,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--off-white); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(240,237,230,0.25);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-awards {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .award-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid var(--ghost-mid);
+    color: rgba(240,237,230,0.35);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-in {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .animate-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger delays */
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--concrete); }
+  ::-webkit-scrollbar-thumb { background: var(--concrete-light); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--steel); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4L35 12.5V27.5L20 36L5 27.5V12.5L20 4Z" fill="none" stroke="#c8a84b" stroke-width="1.5"/>
+      <path d="M20 4L20 36M5 12.5L35 27.5M35 12.5L5 27.5" stroke="#c8a84b" stroke-width="0.75" opacity="0.5"/>
+      <circle cx="20" cy="20" r="4" fill="#c8a84b"/>
+    </svg>
+    <span class="nav-wordmark">RSG <span>3•D</span></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#">Company</a></li>
+    <li><a href="#">For Builders</a></li>
+    <li><a href="#">For Architects</a></li>
+    <li><a href="#">For Engineers</a></li>
+    <li><a href="#" class="active">C+I</a></li>
+    <li><a href="#">Media</a></li>
+    <li><a href="#contact" class="nav-cta">Start Your Project</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-texture"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">Commercial + Industrial</div>
+    <h1 class="hero-title">
+      Built to<br>
+      Last.<br>
+      <em>Built to Win.</em>
+    </h1>
+    <p class="hero-subtitle">
+      RSG 3•D Structural Concrete Insulated Panels deliver commercial and industrial buildings that are faster to construct, cheaper to operate, and virtually indestructible.
+    </p>
+    <div class="hero-pills">
+      <span class="pill">Retail Development</span>
+      <span class="pill">Industrial Facilities</span>
+      <span class="pill">Data Centers</span>
+      <span class="pill">Mixed Use</span>
+      <span class="pill">Municipal</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start Your Project</a>
+      <a href="#comparison" class="btn-ghost">See the Numbers</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image-stack">
+      <!-- Architectural gradient placeholder — replace with actual project photo -->
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2020 0%,#0d1a20 40%,#152020 100%);"></div>
+      <!-- Overlay pattern to suggest structure -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M60 0L0 0 0 60" fill="none" stroke="#c8a84b" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="600" height="700" fill="url(#grid)"/>
+        <line x1="0" y1="0" x2="600" y2="700" stroke="#c8a84b" stroke-width="0.5" opacity="0.4"/>
+        <line x1="600" y1="0" x2="0" y2="700" stroke="#c8a84b" stroke-width="0.5" opacity="0.4"/>
+        <rect x="120" y="120" width="360" height="460" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.3"/>
+        <rect x="200" y="200" width="200" height="280" fill="none" stroke="#c8a84b" stroke-width="0.5" opacity="0.4"/>
+      </svg>
+      <div class="hero-image-overlay"></div>
+    </div>
+
+    <div class="hero-stat-strip">
+      <div class="hero-stat">
+        <div class="hero-stat-num">30+</div>
+        <div class="hero-stat-label">Years in Service</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">20</div>
+        <div class="hero-stat-label">Countries Built</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">0</div>
+        <div class="hero-stat-label">Disaster Damage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESSURE SECTION -->
+<section class="pressure">
+  <div class="section-inner">
+    <div class="pressure-grid">
+      <div class="pressure-left animate-in">
+        <div class="section-eyebrow">The Market Reality</div>
+        <h2 class="section-title">Commercial Construction<br>Under Pressure</h2>
+        <p class="section-body">
+          Developers, builders, and project owners face mounting headwinds. Rising costs, tighter codes, compressed timelines, and growing climate exposure demand a fundamentally better building system.
+        </p>
+        <div class="challenge-list">
+          <div class="challenge-item">
+            <span class="challenge-num">01</span>
+            <span class="challenge-text">Rising costs of materials, labor, and property insurance</span>
+          </div>
+          <div class="challenge-item">
+            <span class="challenge-num">02</span>
+            <span class="challenge-text">Tighter construction timelines and lease commitments</span>
+          </div>
+          <div class="challenge-item">
+            <span class="challenge-num">03</span>
+            <span class="challenge-text">Stricter sustainability and energy code compliance</span>
+          </div>
+          <div class="challenge-item">
+            <span class="challenge-num">04</span>
+            <span class="challenge-text">Increasing climate and natural disaster risk exposure</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-in delay-2">
+        <div class="section-eyebrow" style="margin-bottom:32px;">RSG 3•D Answers Every Challenge</div>
+        <div class="solutions-grid">
+          <div class="solution-card">
+            <span class="solution-icon">🛡️</span>
+            <div class="solution-title">Disaster Resilient</div>
+            <div class="solution-desc">Fire, quake, wind — zero recorded damage in 30 years across 20 countries.</div>
+          </div>
+          <div class="solution-card">
+            <span class="solution-icon">⚡</span>
+            <div class="solution-title">Up to 20% Faster</div>
+            <div class="solution-desc">Precise panel system reduces trades, simplifies sequencing, and compresses schedules.</div>
+          </div>
+          <div class="solution-card">
+            <span class="solution-icon">💰</span>
+            <div class="solution-title">Lower OpEx</div>
+            <div class="solution-desc">R-25 performance envelope slashes energy costs for the life of the building.</div>
+          </div>
+          <div class="solution-card">
+            <span class="solution-icon">🌱</span>
+            <div class="solution-title">50% Less Carbon</div>
+            <div class="solution-desc">80% less rebar and 50% lower carbon footprint vs traditional tilt-up.</div>
+          </div>
+          <div class="solution-card">
+            <span class="solution-icon">✅</span>
+            <div class="solution-title">ICC Certified</div>
+            <div class="solution-desc">Evaluated and certified. Meets or exceeds all structural and energy codes globally.</div>
+          </div>
+          <div class="solution-card">
+            <span class="solution-icon">🎨</span>
+            <div class="solution-title">Any Design</div>
+            <div class="solution-desc">Compatible with every architectural finish and form — including curves and cantilevers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="comparison" id="comparison">
+  <div class="section-inner">
+    <div class="animate-in">
+      <div class="section-eyebrow">Performance Comparison</div>
+      <h2 class="section-title">RSG 3•D Outperforms<br>Tilt-Up on Every Metric</h2>
+    </div>
+
+    <div class="comparison-header animate-in delay-1">
+      <div class="comp-col-header">Wall Assembly</div>
+      <div class="comp-col-header rsg">RSG 3•D</div>
+      <div class="comp-col-header">Traditional Tilt-Up</div>
+      <div class="comp-col-header">Insulated Tilt-Up</div>
+    </div>
+
+    <div class="comp-row animate-in delay-1">
+      <div class="comp-cell metric">Total Concrete Thickness</div>
+      <div class="comp-cell rsg-val">5 inches</div>
+      <div class="comp-cell bad">8 inches</div>
+      <div class="comp-cell bad">11 inches</div>
+    </div>
+    <div class="comp-row animate-in delay-2">
+      <div class="comp-cell metric">Rebar Usage</div>
+      <div class="comp-cell rsg-val">~80% Less</div>
+      <div class="comp-cell bad">Standard</div>
+      <div class="comp-cell bad">Standard</div>
+    </div>
+    <div class="comp-row animate-in delay-2">
+      <div class="comp-cell metric">Carbon Footprint</div>
+      <div class="comp-cell rsg-val">~50% Lower</div>
+      <div class="comp-cell bad">High Emissions</div>
+      <div class="comp-cell bad">High Emissions</div>
+    </div>
+    <div class="comp-row animate-in delay-3">
+      <div class="comp-cell metric">Build Speed</div>
+      <div class="comp-cell rsg-val">Up to 20% Faster</div>
+      <div class="comp-cell bad">Conventional</div>
+      <div class="comp-cell bad">Conventional</div>
+    </div>
+    <div class="comp-row animate-in delay-3">
+      <div class="comp-cell metric">Insulation Value (R)</div>
+      <div class="comp-cell rsg-val">R-25 Performance</div>
+      <div class="comp-cell bad">R-8 or lower</div>
+      <div class="comp-cell bad">Up to R-16</div>
+    </div>
+    <div class="comp-row animate-in delay-4">
+      <div class="comp-cell metric">Disaster Resilience Record</div>
+      <div class="comp-cell rsg-val">Zero Damage — 30 yrs</div>
+      <div class="comp-cell bad">Unrated</div>
+      <div class="comp-cell bad">Unrated</div>
+    </div>
+    <div class="comp-row animate-in delay-4">
+      <div class="comp-cell metric">Structural Certification</div>
+      <div class="comp-cell rsg-val">ICC Evaluated (ESR-2435)</div>
+      <div class="comp-cell bad">Standard codes only</div>
+      <div class="comp-cell bad">Standard codes only</div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="use-cases">
+  <div class="section-inner">
+    <div class="use-cases-intro">
+      <div class="animate-in">
+        <div class="section-eyebrow">Project Types</div>
+        <h2 class="section-title">Built for Every<br>Commercial Sector</h2>
+      </div>
+      <p class="section-body animate-in delay-2">
+        From retail centres and big-box developments to mission-critical data infrastructure — RSG 3•D delivers the same unmatched performance across every building type.
+      </p>
+    </div>
+  </div>
+
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;">
+    <div class="use-cases-grid">
+      <div class="use-case-card uc-retail animate-in">
+        <div class="use-case-bg"></div>
+        <div class="use-case-content">
+          <div class="use-case-tag">Commercial</div>
+          <div class="use-case-title">Retail &amp; Mixed Use</div>
+          <ul class="use-case-bullets">
+            <li>Build sleek, resilient spaces that open faster</li>
+            <li>Reduce operating costs with superior efficiency</li>
+            <li>Deliver sustainable designs that attract tenants</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="use-case-card uc-industrial animate-in delay-1">
+        <div class="use-case-bg"></div>
+        <div class="use-case-content">
+          <div class="use-case-tag">Industrial</div>
+          <div class="use-case-title">Warehouse &amp; Manufacturing</div>
+          <ul class="use-case-bullets">
+            <li>Accelerate construction of large-span structures</li>
+            <li>Lower long-term costs with durable, high-performance walls</li>
+            <li>Scale operations with buildings engineered for strength</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="use-case-card uc-datacenter animate-in delay-2">
+        <div class="use-case-bg"></div>
+        <div class="use-case-content">
+          <div class="use-case-tag">Critical Infrastructure</div>
+          <div class="use-case-title">Data Centers</div>
+          <ul class="use-case-bullets">
+            <li>Ensure uptime with secure, disaster-resilient facilities</li>
+            <li>Cut energy use through high-efficiency building envelopes</li>
+            <li>Protect critical infrastructure with unmatched structural performance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAND -->
+<div class="proof-band animate-in">
+  <div class="proof-band-inner">
+    <div class="proof-stat">
+      <div class="proof-stat-num">10K+</div>
+      <div class="proof-stat-label">Structures Built Worldwide</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-stat-num">R-25</div>
+      <div class="proof-stat-label">Insulation Performance</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-stat-num">50%</div>
+      <div class="proof-stat-label">Less Carbon vs Tilt-Up</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-stat-num">ICC</div>
+      <div class="proof-stat-label">Certified ESR-2435</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAKEHOLDERS -->
+<section class="stakeholders">
+  <div class="section-inner">
+    <div class="animate-in">
+      <div class="section-eyebrow">Who We Build With</div>
+      <h2 class="section-title">Value at Every<br>Level of the Project</h2>
+    </div>
+
+    <div class="stakeholders-grid">
+      <div class="stakeholder-panel animate-in delay-1">
+        <div class="stakeholder-role">For Developers</div>
+        <div class="stakeholder-title">Developer Benefits</div>
+        <ul class="stakeholder-benefits">
+          <li>Predictable budgets and construction schedules</li>
+          <li>Long-lived, low-maintenance assets with superior lifecycle value</li>
+          <li>Greater tenant appeal and marketability</li>
+          <li>High-performance, disaster-resilient building envelope</li>
+        </ul>
+      </div>
+
+      <div class="stakeholder-panel animate-in delay-2">
+        <div class="stakeholder-role">For Builders</div>
+        <div class="stakeholder-title">Builder Benefits</div>
+        <ul class="stakeholder-benefits">
+          <li>Faster, simpler construction with a precise panel system</li>
+          <li>Fewer trades and interfaces on site</li>
+          <li>Full technical support from the RSG 3•D team</li>
+          <li>Modulation workflows and build documentation provided</li>
+        </ul>
+      </div>
+
+      <div class="stakeholder-panel animate-in delay-3">
+        <div class="stakeholder-role">For Architects</div>
+        <div class="stakeholder-title">Design Benefits</div>
+        <ul class="stakeholder-benefits">
+          <li>Compatible with any architectural design, finish, or cladding</li>
+          <li>Supports complex forms, curves, and cantilevers</li>
+          <li>Easy integration into standard workflows</li>
+          <li>Design flexibility without structural compromise</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner animate-in">
+    <div class="cta-eyebrow">Ready to Build Differently?</div>
+    <h2 class="cta-title">Build Like You've<br>Never Built Before.</h2>
+    <p class="cta-body">
+      Let's discuss your next commercial or industrial project. Our team will show you exactly how RSG 3•D delivers stronger, faster, and more sustainable results — with a cost structure that wins.
+    </p>
+    <div class="cta-actions">
+      <a href="#contact" class="btn-primary">Talk to Our Team</a>
+      <a href="#comparison" class="btn-ghost">View Performance Data</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="contact">
+  <div class="section-inner">
+    <div class="form-grid">
+      <div class="animate-in">
+        <div class="section-eyebrow">Get in Touch</div>
+        <h2 class="section-title">Start Your<br>Project Here</h2>
+        <p class="section-body" style="margin-bottom:40px;">
+          Tell us about your project and a member of the RSG 3•D commercial team will be in touch within one business day.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);margin-bottom:6px;">ICC Evaluation Report</div>
+            <div style="font-size:14px;color:rgba(240,237,230,0.5);font-weight:300;">ESR-2435 — Certified and evaluated for global structural compliance</div>
+          </div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);margin-bottom:6px;">10-Year Material Warranty</div>
+            <div style="font-size:14px;color:rgba(240,237,230,0.5);font-weight:300;">Full replacement warranty, backed by Lloyds through StrucSure</div>
+          </div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);margin-bottom:6px;">Miami-Dade NOA Approved</div>
+            <div style="font-size:14px;color:rgba(240,237,230,0.5);font-weight:300;">The highest wind and impact resistance standard in North America</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-in delay-2">
+        <div class="form-row">
+          <div>
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" placeholder="Your name">
+          </div>
+          <div>
+            <label class="form-label">Company</label>
+            <input type="text" class="form-input" placeholder="Your company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="Email address">
+          </div>
+          <div>
+            <label class="form-label">Phone</label>
+            <input type="tel" class="form-input" placeholder="Phone number">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label class="form-label">Building Sector</label>
+            <select class="form-input">
+              <option value="" disabled selected>Select one...</option>
+              <option>Commercial Retail</option>
+              <option>Industrial / Warehouse</option>
+              <option>Data Center</option>
+              <option>Mixed Use</option>
+              <option>Municipal / Institutional</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Region</label>
+            <select class="form-input">
+              <option value="" disabled selected>Select one...</option>
+              <option>Western Canada</option>
+              <option>Eastern Canada</option>
+              <option>Western US</option>
+              <option>Southern US</option>
+              <option>Eastern US</option>
+              <option>International</option>
+            </select>
+          </div>
+        </div>
+        <label class="form-label">Project Details</label>
+        <textarea class="form-input" placeholder="Tell us about your project — size, timeline, and any specific requirements."></textarea>
+        <button class="form-submit">Submit Project Inquiry</button>
+        <div class="form-trust">
+          <span class="trust-item">No obligation</span>
+          <span class="trust-item">Response within 24 hrs</span>
+          <span class="trust-item">ICC certified system</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+            <path d="M20 4L35 12.5V27.5L20 36L5 27.5V12.5L20 4Z" fill="none" stroke="#c8a84b" stroke-width="1.5"/>
+            <circle cx="20" cy="20" r="4" fill="#c8a84b"/>
+          </svg>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.08em;">RSG <span style="color:var(--steel);">3•D</span></span>
+        </div>
+        <p>The most resilient and energy-efficient structural panel building system in the world. Proven in 30+ years and 20 countries.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#">The RSG 3•D Difference</a></li>
+          <li><a href="#">Featured Projects</a></li>
+          <li><a href="#">Building with RSG 3•D</a></li>
+          <li><a href="#">Company</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Sectors</div>
+        <ul class="footer-links">
+          <li><a href="#">Commercial Retail</a></li>
+          <li><a href="#">Industrial</a></li>
+          <li><a href="#">Data Centers</a></li>
+          <li><a href="#">Municipal</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="#">For Architects</a></li>
+          <li><a href="#">For Engineers</a></li>
+          <li><a href="#">For Builders</a></li>
+          <li><a href="#">Media</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 RSG 3-D. All Rights Reserved. <a href="#" style="color:rgba(240,237,230,0.35);text-decoration:none;">Privacy Policy</a></div>
+      <div class="footer-awards">
+        <div class="award-badge">NAHB Global Innovation Award</div>
+        <div class="award-badge">Miami-Dade NOA</div>
+        <div class="award-badge">ICC Certified</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Intersection observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+  // Smooth active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      const sectionHeight = section.offsetHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
