@@ -1065,6 +1065,237 @@
   .delay-4 { transition-delay: 0.4s; }
   .delay-5 { transition-delay: 0.5s; }
 
+  /* ─── WALL COMPARISON DIAGRAMS ─── */
+  .wall-compare {
+    padding: 120px 0;
+    background: var(--concrete-mid);
+  }
+
+  .wall-diagrams-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .wall-card {
+    background: var(--concrete);
+    border: 1px solid var(--ghost-mid);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.25s;
+  }
+
+  .wall-card:hover { border-color: var(--ghost-strong); }
+
+  .wall-card.wall-rsg {
+    border-color: var(--steel);
+    box-shadow: 0 0 0 1px var(--steel);
+  }
+
+  .wall-card-img {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    min-height: 220px;
+  }
+
+  .wall-card-img img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+  }
+
+  .wall-card-body {
+    padding: 20px 20px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .wall-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+
+  .wall-card.wall-rsg .wall-card-label { color: var(--steel-light); }
+
+  .wall-card-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--off-white);
+    line-height: 1.2;
+  }
+
+  .wall-card-dims {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(240,237,230,0.55);
+    margin-top: 2px;
+  }
+
+  .wall-card-verdict {
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    align-self: flex-start;
+  }
+
+  .verdict-bad  { background: rgba(192,57,43,0.15); color: #e67e6a; }
+  .verdict-mid  { background: rgba(200,168,75,0.12); color: #c8a84b; }
+  .verdict-best { background: rgba(58,125,68,0.18); color: #5aad66; }
+
+  /* TCA Results Strip */
+  .tca-strip {
+    margin-top: 56px;
+    background: var(--concrete);
+    border: 1px solid var(--ghost-mid);
+    border-radius: 4px;
+    padding: 32px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .tca-strip-quote {
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(240,237,230,0.75);
+    line-height: 1.65;
+    border-left: 3px solid var(--steel);
+    padding-left: 20px;
+  }
+
+  .tca-strip-quote cite {
+    display: block;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--steel);
+    margin-top: 10px;
+  }
+
+  .tca-strip-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 200px;
+  }
+
+  .tca-stat {
+    text-align: center;
+    padding: 12px 20px;
+    border: 1px solid var(--ghost-mid);
+    border-radius: 4px;
+  }
+
+  .tca-stat-num {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--steel);
+    line-height: 1;
+  }
+
+  .tca-stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.5);
+    margin-top: 4px;
+  }
+
+  /* ─── RESOURCES / DOWNLOADS ─── */
+  .resources {
+    padding: 100px 0;
+    background: var(--concrete-mid);
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .resource-card {
+    background: var(--concrete);
+    border: 1px solid var(--ghost-mid);
+    border-radius: 4px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    transition: border-color 0.25s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .resource-card:hover {
+    border-color: var(--steel);
+    transform: translateY(-2px);
+  }
+
+  .resource-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--ghost);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  .resource-icon svg { width: 20px; height: 20px; }
+
+  .resource-type {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+
+  .resource-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--off-white);
+    line-height: 1.25;
+  }
+
+  .resource-desc {
+    font-size: 13px;
+    color: rgba(240,237,230,0.55);
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .resource-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--steel);
+    margin-top: 8px;
+  }
+
+  .resource-action svg { width: 14px; height: 14px; }
+
   /* ─── CARBON CALCULATOR ─── */
   .carbon-calc {
     padding: 120px 0;
@@ -1321,6 +1552,7 @@
     <li><a href="#">For Engineers</a></li>
     <li><a href="#" class="active">C+I</a></li>
     <li><a href="#">Media</a></li>
+    <li><a href="#resources">Resources</a></li>
     <li><a href="#contact" class="nav-cta">Start Your Project</a></li>
   </ul>
 </nav>
@@ -1500,6 +1732,88 @@
       <div class="comp-cell rsg-val">ICC Evaluated (ESR-2435)</div>
       <div class="comp-cell bad">Standard codes only</div>
       <div class="comp-cell bad">Standard codes only</div>
+    </div>
+  </div>
+</section>
+
+<!-- WALL SYSTEM COMPARISON -->
+<section class="wall-compare" id="wall-systems">
+  <div class="section-inner">
+    <div class="animate-in">
+      <div class="section-eyebrow">Cross-Section Comparison</div>
+      <h2 class="section-title">Four Wall Systems.<br>One Clear Winner.</h2>
+      <p class="section-body">The TCA Grey Book tested all four tilt-up wall configurations at Utah State University. RSG 3•D was the only system that achieved full composite action and matched the structural behavior of solid concrete — using 50% less material.</p>
+    </div>
+
+    <div class="wall-diagrams-grid">
+      <div class="wall-card animate-in delay-1">
+        <div class="wall-card-img">
+          <img src="images/wall-solid.png" alt="8-inch solid tilt-up wall cross section">
+        </div>
+        <div class="wall-card-body">
+          <div class="wall-card-label">Conventional</div>
+          <div class="wall-card-name">Solid Tilt-Up</div>
+          <div class="wall-card-dims">8″ solid concrete · No insulation</div>
+          <div class="wall-card-verdict verdict-bad">Highest Carbon</div>
+        </div>
+      </div>
+
+      <div class="wall-card animate-in delay-2">
+        <div class="wall-card-img">
+          <img src="images/wall-insulated.png" alt="Insulated tilt-up wall cross section">
+        </div>
+        <div class="wall-card-body">
+          <div class="wall-card-label">FRP Connector</div>
+          <div class="wall-card-name">Insulated Tilt-Up</div>
+          <div class="wall-card-dims">3″ / 2″ EPS / 11″ · 16″ total</div>
+          <div class="wall-card-verdict verdict-bad">High Carbon · Brittle Failure</div>
+        </div>
+      </div>
+
+      <div class="wall-card animate-in delay-3">
+        <div class="wall-card-img">
+          <img src="images/wall-composite.png" alt="Composite tilt-up wall cross section">
+        </div>
+        <div class="wall-card-body">
+          <div class="wall-card-label">FRP Connector</div>
+          <div class="wall-card-name">Composite Tilt-Up</div>
+          <div class="wall-card-dims">3″ / 2″ EPS / 7″ · 12″ total</div>
+          <div class="wall-card-verdict verdict-mid">Medium Carbon · Modified Design</div>
+        </div>
+      </div>
+
+      <div class="wall-card wall-rsg animate-in delay-4">
+        <div class="wall-card-img">
+          <img src="images/wall-rsg.png" alt="RSG 3-D panel cross section">
+        </div>
+        <div class="wall-card-body">
+          <div class="wall-card-label">RSG 3•D — EVG Wire Truss</div>
+          <div class="wall-card-name">RSG 3•D Panel</div>
+          <div class="wall-card-dims">2″ / 5″ EPS / 3″ · 10″ total · R-20 ci</div>
+          <div class="wall-card-verdict verdict-best">Lowest Carbon · 105% Composite ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tca-strip animate-in">
+      <div class="tca-strip-quote">
+        "RSG 3•D panels achieved 105% of fully composite nominal moment strength, failed in a ductile flexural mode, produced end slip of just 0.012 inches at ultimate load, and was the only system that could be designed using the standard unmodified Slender Wall Method."
+        <cite>— TCA Grey Book · Utah State University, 2023–2024</cite>
+      </div>
+      <div class="tca-strip-stats">
+        <div class="tca-stat">
+          <div class="tca-stat-num">105%</div>
+          <div class="tca-stat-label">Composite Action</div>
+        </div>
+        <div class="tca-stat">
+          <div class="tca-stat-num">0.012″</div>
+          <div class="tca-stat-label">End Slip at Ultimate Load</div>
+        </div>
+        <div class="tca-stat">
+          <div class="tca-stat-num">41 ft</div>
+          <div class="tca-stat-label">Panel Span Tested</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1840,6 +2154,64 @@
           <li>Design flexibility without structural compromise</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="resources" id="resources">
+  <div class="section-inner">
+    <div class="animate-in">
+      <div class="section-eyebrow">Technical Documentation</div>
+      <h2 class="section-title">Download the Full<br>Technical Record</h2>
+      <p class="section-body">RSG 3•D is the most thoroughly validated insulated panel system available. Every claim is backed by peer-reviewed testing, an active ICC-ES evaluation report, and a 30-year global track record.</p>
+    </div>
+
+    <div class="resources-grid">
+      <a class="resource-card animate-in delay-1" href="RSG_3D_Master_Product_Brief_Enhanced.docx" download>
+        <div class="resource-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--steel)">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <div class="resource-type">Product Brief</div>
+        <div class="resource-title">RSG 3•D Master Product Brief</div>
+        <div class="resource-desc">Complete technical overview — system configuration, EVG truss connector data, application methods, competitive positioning, and TCA test results.</div>
+        <div class="resource-action">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download DOCX
+        </div>
+      </a>
+
+      <a class="resource-card animate-in delay-2" href="https://www.icc-es.org/reports/pdf_files/load_file.cfm?file_type=pdf&name=ESR-2435.pdf" target="_blank" rel="noopener">
+        <div class="resource-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--steel)">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/><path d="M8 2.5A10 10 0 0 1 21.5 16"/>
+          </svg>
+        </div>
+        <div class="resource-type">Evaluation Report</div>
+        <div class="resource-title">ICC-ES Evaluation Report ESR-2435</div>
+        <div class="resource-desc">Active ICC-ES evaluation confirming compliance with IBC for structural design, shotcrete application, and connector properties under ACI 318.</div>
+        <div class="resource-action">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View at ICC-ES
+        </div>
+      </a>
+
+      <a class="resource-card animate-in delay-3" href="#" target="_blank" rel="noopener">
+        <div class="resource-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--steel)">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </div>
+        <div class="resource-type">Independent Research</div>
+        <div class="resource-title">TCA Grey Book — Utah State University</div>
+        <div class="resource-desc">The most rigorous full-scale independent testing of concrete insulated panels for tilt-up construction ever conducted. 20 panels, 5 connector systems, 41-ft spans.</div>
+        <div class="resource-action">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Request via TCA
+        </div>
+      </a>
     </div>
   </div>
 </section>
