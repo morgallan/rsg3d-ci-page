@@ -1675,7 +1675,8 @@
   ═══════════════════════════════════════════ */
   @media (max-width: 768px) {
 
-    html, body { overflow-x: hidden; }
+    html { overflow-x: hidden; }
+    body { overflow-x: hidden; max-width: 100vw; }
 
     /* ── Container ── */
     .section-inner { padding: 0 20px; }
@@ -1721,16 +1722,21 @@
     .solutions-grid { grid-template-columns: 1fr; }
     .solution-card-img { height: 160px; margin: -30px -26px 20px; }
 
-    /* ── Comparison table ── */
+    /* ── Comparison table — 2-column mobile layout ── */
     .comparison { padding: 60px 0; }
-    .comp-table-wrap {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+    .comp-table-wrap { overflow: visible; }
+    .comparison-header {
+      grid-template-columns: 1fr 1fr;
+      margin-top: 32px;
     }
-    .comp-table-wrap .comparison-header,
-    .comp-table-wrap .comp-row { min-width: 560px; }
-    .comp-cell { padding: 12px 10px; font-size: 13px; }
-    .comparison-header { font-size: 12px; padding: 14px 10px; }
+    .comp-row { grid-template-columns: 1fr 1fr; }
+    /* hide competitor columns (3rd and 4th children) */
+    .comp-col-header:nth-child(3),
+    .comp-col-header:nth-child(4),
+    .comp-row .comp-cell:nth-child(3),
+    .comp-row .comp-cell:nth-child(4) { display: none; }
+    .comp-cell { padding: 14px 12px; font-size: 14px; }
+    .comp-col-header { padding: 16px 12px; font-size: 12px; }
 
     /* ── Wall compare ── */
     .wall-compare { padding: 60px 0; }
@@ -1773,7 +1779,7 @@
     .quote-block,
     .callout-block { padding: 32px 20px; }
 
-    /* ── Inline style grids (calculator, etc.) ── */
+    /* ── Inline style overrides ── */
     [style*="grid-template-columns: 1fr 1fr"],
     [style*="grid-template-columns:1fr 1fr"] {
       grid-template-columns: 1fr !important;
@@ -1782,7 +1788,12 @@
     [style*="grid-template-columns:1fr 1fr 1fr"] {
       grid-template-columns: 1fr 1fr !important;
     }
-    [style*="padding:0 48px"] { padding-left: 20px !important; padding-right: 20px !important; }
+    /* inline padding:0 48px containers */
+    [style*="padding:0 48px"],
+    [style*="padding: 0 48px"] {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
   }
 
   /* Very small screens */
