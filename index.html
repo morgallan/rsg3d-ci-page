@@ -1110,8 +1110,22 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.25s;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    position: relative;
   }
+
+  /* Colored top rating bar */
+  .wall-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    z-index: 2;
+  }
+
+  .wall-bad::before  { background: #dc2626; }
+  .wall-mid::before  { background: #d97706; }
+  .wall-card.wall-rsg::before { background: #c8a84b; }
 
   .wall-card:hover { border-color: var(--ghost-strong); }
 
@@ -1121,65 +1135,70 @@
   }
 
   .wall-card-img {
-    background: #fff;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--ghost-mid);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px 16px;
-    min-height: 220px;
+    padding: 32px 20px;
+    min-height: 240px;
   }
 
   .wall-card-img img {
     max-width: 100%;
-    max-height: 200px;
+    max-height: 210px;
     object-fit: contain;
   }
 
   .wall-card-body {
-    padding: 20px 20px 24px;
+    padding: 20px 20px 0;
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
   }
 
   .wall-card-label {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--steel);
+    color: rgba(240,237,230,0.4);
   }
 
-  .wall-card.wall-rsg .wall-card-label { color: var(--steel-light); }
+  .wall-card.wall-rsg .wall-card-label { color: var(--steel); }
 
   .wall-card-name {
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 800;
     color: var(--off-white);
     line-height: 1.2;
-  }
-
-  .wall-card-dims {
-    font-size: 13px;
-    font-weight: 400;
-    color: rgba(240,237,230,0.55);
     margin-top: 2px;
   }
 
-  .wall-card-verdict {
-    margin-top: 10px;
+  .wall-card-dims {
     font-size: 12px;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 3px;
-    display: inline-block;
-    align-self: flex-start;
+    font-weight: 400;
+    color: rgba(240,237,230,0.5);
+    line-height: 1.5;
+    padding-bottom: 16px;
   }
 
-  .verdict-bad  { background: rgba(192,57,43,0.15); color: #e67e6a; }
-  .verdict-mid  { background: rgba(200,168,75,0.12); color: #c8a84b; }
-  .verdict-best { background: rgba(58,125,68,0.18); color: #5aad66; }
+  /* Verdict: full-width strip at bottom with left accent */
+  .wall-card-verdict {
+    margin-top: auto;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px 16px;
+    border-top: 1px solid var(--ghost-mid);
+    border-left: 3px solid transparent;
+    display: block;
+    letter-spacing: 0.02em;
+  }
+
+  .verdict-bad  { background: rgba(220,38,38,0.08);  color: #f87171; border-left-color: #dc2626; }
+  .verdict-mid  { background: rgba(217,119,6,0.08);  color: #fbbf24; border-left-color: #d97706; }
+  .verdict-best { background: rgba(22,163,74,0.10);  color: #4ade80; border-left-color: #16a34a; }
 
   /* TCA Results Strip */
   .tca-strip {
@@ -1623,10 +1642,17 @@
 
   /* ── Wall compare cards ── */
   .wall-card { background: #ffffff; border-color: #e2e8f0; }
-  .wall-card:hover { border-color: #b8972f; }
+  .wall-card:hover { border-color: #94a3b8; }
+  .wall-card.wall-rsg { border-color: #b8972f; box-shadow: 0 0 0 1px #b8972f; }
+  .wall-card-img { background: #f8fafc; border-bottom-color: #e2e8f0; }
+  .wall-card-label { color: #94a3b8; }
+  .wall-card.wall-rsg .wall-card-label { color: #b8972f; }
   .wall-card-name { color: #0f172a; }
   .wall-card-dims { color: #64748b; }
-  .wall-card-label { color: #b8972f; }
+  .wall-card-verdict { border-top-color: #e2e8f0; }
+  .verdict-bad  { background: #fef2f2; color: #dc2626; border-left-color: #dc2626; }
+  .verdict-mid  { background: #fffbeb; color: #d97706; border-left-color: #d97706; }
+  .verdict-best { background: #f0fdf4; color: #16a34a; border-left-color: #16a34a; }
 
   /* ── TCA strip — keep dark ── */
   .tca-strip { background: #0f172a; border-color: #1e3a5f; }
@@ -1887,7 +1913,7 @@
     </div>
 
     <div class="wall-diagrams-grid">
-      <div class="wall-card animate-in delay-1">
+      <div class="wall-card wall-bad animate-in delay-1">
         <div class="wall-card-img">
           <img src="images/wall-solid.png" alt="8-inch solid tilt-up wall cross section">
         </div>
@@ -1895,11 +1921,11 @@
           <div class="wall-card-label">Conventional</div>
           <div class="wall-card-name">Solid Tilt-Up</div>
           <div class="wall-card-dims">8″ solid concrete · No insulation</div>
-          <div class="wall-card-verdict verdict-bad">Highest Carbon</div>
         </div>
+        <div class="wall-card-verdict verdict-bad">Highest Carbon</div>
       </div>
 
-      <div class="wall-card animate-in delay-2">
+      <div class="wall-card wall-bad animate-in delay-2">
         <div class="wall-card-img">
           <img src="images/wall-insulated.png" alt="Insulated tilt-up wall cross section">
         </div>
@@ -1907,11 +1933,11 @@
           <div class="wall-card-label">FRP Connector</div>
           <div class="wall-card-name">Insulated Tilt-Up</div>
           <div class="wall-card-dims">3″ / 2″ EPS / 11″ · 16″ total</div>
-          <div class="wall-card-verdict verdict-bad">High Carbon · Brittle Failure</div>
         </div>
+        <div class="wall-card-verdict verdict-bad">High Carbon · Brittle Failure</div>
       </div>
 
-      <div class="wall-card animate-in delay-3">
+      <div class="wall-card wall-mid animate-in delay-3">
         <div class="wall-card-img">
           <img src="images/wall-composite.png" alt="Composite tilt-up wall cross section">
         </div>
@@ -1919,8 +1945,8 @@
           <div class="wall-card-label">FRP Connector</div>
           <div class="wall-card-name">Composite Tilt-Up</div>
           <div class="wall-card-dims">3″ / 2″ EPS / 7″ · 12″ total</div>
-          <div class="wall-card-verdict verdict-mid">Medium Carbon · Modified Design</div>
         </div>
+        <div class="wall-card-verdict verdict-mid">Medium Carbon · Modified Design</div>
       </div>
 
       <div class="wall-card wall-rsg animate-in delay-4">
@@ -1931,8 +1957,8 @@
           <div class="wall-card-label">RSG 3•D — EVG Wire Truss</div>
           <div class="wall-card-name">RSG 3•D Panel</div>
           <div class="wall-card-dims">2″ / 5″ EPS / 3″ · 10″ total · R-20 ci</div>
-          <div class="wall-card-verdict verdict-best">Lowest Carbon · 105% Composite ✓</div>
         </div>
+        <div class="wall-card-verdict verdict-best">Lowest Carbon · 105% Composite ✓</div>
       </div>
     </div>
 
