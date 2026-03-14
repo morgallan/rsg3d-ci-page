@@ -1669,6 +1669,129 @@
 
   /* ── Dividers ── */
   .section-divider { background: #e2e8f0; }
+
+  /* ═══════════════════════════════════════════
+     MOBILE / RESPONSIVE  (max-width: 768px)
+  ═══════════════════════════════════════════ */
+  @media (max-width: 768px) {
+
+    html, body { overflow-x: hidden; }
+
+    /* ── Container ── */
+    .section-inner { padding: 0 20px; }
+
+    /* ── Nav ── */
+    nav { padding: 0 20px; height: 60px; }
+    .nav-links { display: none; }
+    .nav-cta { padding: 8px 14px; font-size: 11px; }
+    .nav-wordmark { font-size: 18px; }
+
+    /* ── Hero ── */
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding-top: 60px;
+    }
+    .hero-left {
+      padding: 48px 20px 40px;
+    }
+    .hero-right { display: none; }
+    .hero-title { font-size: clamp(40px, 10vw, 60px); margin-bottom: 24px; }
+    .hero-subtitle { font-size: 15px; margin-bottom: 32px; }
+    .hero-pills { margin-bottom: 32px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .hero-actions .btn-primary,
+    .hero-actions .btn-ghost { width: 100%; text-align: center; }
+    .hero-stat-strip {
+      position: relative;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .hero-stat { padding: 18px 12px; }
+    .hero-stat-num { font-size: 24px; }
+    .hero-stat-label { font-size: 10px; }
+
+    /* ── Section headings ── */
+    .section-title { font-size: clamp(28px, 7vw, 42px); }
+
+    /* ── Pressure ── */
+    .pressure { padding: 60px 0; }
+    .pressure-grid { grid-template-columns: 1fr; gap: 40px; }
+
+    /* ── Solutions grid ── */
+    .solutions-grid { grid-template-columns: 1fr; }
+    .solution-card-img { height: 160px; margin: -30px -26px 20px; }
+
+    /* ── Comparison table ── */
+    .comparison { padding: 60px 0; }
+    .comp-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .comp-table-wrap .comparison-header,
+    .comp-table-wrap .comp-row { min-width: 560px; }
+    .comp-cell { padding: 12px 10px; font-size: 13px; }
+    .comparison-header { font-size: 12px; padding: 14px 10px; }
+
+    /* ── Wall compare ── */
+    .wall-compare { padding: 60px 0; }
+    .wall-diagrams-grid { grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .wall-card { padding: 20px 16px; }
+    .wall-card-name { font-size: 14px; }
+    .wall-card-dims { font-size: 12px; }
+    .wall-card-verdict { font-size: 11px; padding: 8px 12px; }
+
+    /* ── Use Cases ── */
+    .use-cases { padding: 60px 0; }
+    .use-cases-intro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 40px; }
+    .use-cases-grid { grid-template-columns: 1fr; gap: 2px; }
+    .use-case-card { aspect-ratio: 16/9; }
+    .use-case-title { font-size: 28px; }
+
+    /* ── Stakeholders ── */
+    .stakeholders { padding: 60px 0; }
+    .stakeholders-grid { grid-template-columns: 1fr; gap: 2px; margin-top: 40px; }
+    .stakeholder-panel { padding: 36px 24px; }
+    .stakeholder-title { font-size: 30px; }
+
+    /* ── Resources / Stats ── */
+    .resources { padding: 60px 0; }
+    .resource-grid,
+    .stats-grid { grid-template-columns: 1fr; gap: 24px; }
+
+    /* ── Form ── */
+    .form-section { padding: 60px 0; }
+    .form-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+
+    /* ── Footer ── */
+    footer { padding: 48px 0 32px; }
+    .footer-inner { padding: 0 20px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+
+    /* ── Quote / Callout blocks ── */
+    .quote-block,
+    .callout-block { padding: 32px 20px; }
+
+    /* ── Inline style grids (calculator, etc.) ── */
+    [style*="grid-template-columns: 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    [style*="grid-template-columns: 1fr 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr 1fr"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    [style*="padding:0 48px"] { padding-left: 20px !important; padding-right: 20px !important; }
+  }
+
+  /* Very small screens */
+  @media (max-width: 420px) {
+    .hero-stat-strip { grid-template-columns: 1fr; }
+    .hero-stat { border-right: none; border-bottom: 1px solid var(--ghost-mid); }
+    .wall-diagrams-grid { grid-template-columns: 1fr; }
+    .nav-cta { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -1823,6 +1946,7 @@
       <h2 class="section-title">RSG 3•D Outperforms<br>Tilt-Up on Every Metric</h2>
     </div>
 
+    <div class="comp-table-wrap">
     <div class="comparison-header animate-in delay-1">
       <div class="comp-col-header">Wall Assembly</div>
       <div class="comp-col-header rsg">RSG 3•D</div>
@@ -1867,6 +1991,7 @@
       <div class="comp-cell bad">Standard codes only</div>
       <div class="comp-cell bad">Standard codes only</div>
     </div>
+    </div><!-- /comp-table-wrap -->
   </div>
 </section>
 
